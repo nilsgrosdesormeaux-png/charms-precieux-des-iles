@@ -266,3 +266,28 @@ footer { background: var(--lagon); color: var(--sable); padding: 48px 0 32px; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero img { animation: none; }
 }
+
+/* ---- PANIER : livraison et paiement ---- */
+.panier-titre { font-family: 'Fraunces', serif; color: var(--lagon); margin: 22px 0 10px; }
+.zone { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--ligne); margin-bottom: 8px; cursor: pointer; background: #fff; font-size: 0.88rem; }
+.zone.choisie { border-color: var(--lagon); box-shadow: inset 0 0 0 1px var(--lagon); }
+.zone input { accent-color: var(--lagon); margin: 0; }
+.zone span:nth-of-type(1) { flex: 1; display: flex; flex-direction: column; }
+.zone small { color: var(--lagon-clair); font-size: 0.78rem; }
+.zone-prix { font-weight: 600; white-space: nowrap; }
+.totaux { margin: 16px 0; font-size: 0.9rem; }
+.totaux div { display: flex; justify-content: space-between; padding: 4px 0; }
+.totaux .total { border-top: 1px solid var(--ligne); margin-top: 6px; padding-top: 10px; font-weight: 600; font-size: 1.02rem; }
+.bouton-principal:disabled { opacity: 0.5; cursor: not-allowed; }
+.panier-message { font-size: 0.85rem; margin: 10px 0 0; color: var(--lagon); }
+.panier-message:empty { display: none; }
+.panier-message.erreur { color: var(--corail); }
+.panier-note a { color: var(--corail); }
+@media (max-width: 520px) {
+  .voile { padding: 10px; align-items: flex-end; }
+  .panneau { padding: 22px 18px; max-height: 94vh; }
+  .panneau .sous-titre { margin-bottom: 12px; }
+  .ligne-panier { padding: 6px 0; }
+  .panier-titre { margin: 14px 0 8px; }
+  .zone { padding: 10px; }
+}

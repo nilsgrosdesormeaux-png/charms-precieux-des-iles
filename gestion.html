@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Gestion · Charms Précieux des Îles</title>
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<link rel="apple-touch-icon" href="images/logo.jpg">
+<meta name="theme-color" content="#17423F">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="gestion.css">
+</head>
+<body>
+
+<!-- ============ CONNEXION ============ -->
+<section id="ecran-connexion" class="ecran">
+  <form class="carte-connexion" id="form-connexion">
+    <img src="images/logo.webp" alt="" width="96" height="96">
+    <h1>Espace gestion</h1>
+    <p class="aide">Réservé à la boutique.</p>
+    <label>E-mail<input type="email" id="c-email" autocomplete="username" required></label>
+    <label>Mot de passe<input type="password" id="c-mdp" autocomplete="current-password" required></label>
+    <button class="btn principal" type="submit">Se connecter</button>
+    <p class="erreur" id="c-erreur"></p>
+  </form>
+</section>
+
+<!-- ============ APPLICATION ============ -->
+<section id="ecran-app" class="ecran" hidden>
+  <header class="barre">
+    <strong>Ma boutique</strong>
+    <div>
+      <a href="./" target="_blank" rel="noopener" class="lien-barre">Voir le site ↗</a>
+      <button class="lien-barre" id="btn-deconnexion">Déconnexion</button>
+    </div>
+  </header>
+
+  <!-- ---- Pièces ---- -->
+  <main id="vue-pieces" class="vue">
+    <button class="btn principal grand" onclick="ouvrirEditeur()">+ Ajouter une pièce</button>
+    <div class="puces" id="filtre-statut">
+      <button class="puce actif" data-f="tous">Toutes</button>
+      <button class="puce" data-f="en_vente">En vente</button>
+      <button class="puce" data-f="vendue">Vendues</button>
+      <button class="puce" data-f="masquee">Masquées</button>
+    </div>
+    <div id="liste-pieces"></div>
+  </main>
+
+  <!-- ---- Commandes ---- -->
+  <main id="vue-commandes" class="vue" hidden>
+    <div class="puces" id="filtre-commandes">
+      <button class="puce actif" data-f="a_expedier">À expédier</button>
+      <button class="puce" data-f="expediee">Expédiées</button>
+      <button class="puce" data-f="remboursee">Remboursées</button>
+    </div>
+    <div id="liste-commandes"></div>
+  </main>
+
+  <!-- ---- Réglages ---- -->
+  <main id="vue-reglages" class="vue" hidden>
+    <h2>Frais de livraison</h2>
+    <p class="aide">Ces montants s'affichent dans le panier et sur la page de paiement. Une zone fermée n'est pas proposée aux clientes.</p>
+    <div id="liste-zones"></div>
+    <button class="btn principal" onclick="enregistrerZones()">Enregistrer les frais de livraison</button>
+
+    <h2>Mot de passe</h2>
+    <label class="champ">Nouveau mot de passe (8 caractères minimum)<input type="password" id="r-mdp" autocomplete="new-password" minlength="8"></label>
+    <button class="btn" onclick="changerMotDePasse()">Changer mon mot de passe</button>
+
+    <h2>Raccourcis</h2>
+    <p><a class="lien" href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener">Mes paiements sur Stripe ↗</a></p>
+    <p class="aide">Pour rembourser une cliente : Stripe → Paiements → le paiement → « Rembourser ». Pensez ensuite à marquer la commande « remboursée » ici.</p>
+  </main>
+
+  <nav class="onglets">
+    <button class="onglet actif" data-vue="pieces">Pièces</button>
+    <button class="onglet" data-vue="commandes">Commandes <span class="pastille" id="pastille-commandes" hidden></span></button>
+    <button class="onglet" data-vue="reglages">Réglages</button>
+  </nav>
+</section>
+
+<!-- ============ ÉDITEUR DE PIÈCE (plein écran) ============ -->
+<section id="editeur" class="feuille" hidden>
+  <header class="barre">
+    <button class="lien-barre" onclick="fermerEditeur()">← Retour</button>
+    <strong id="ed-titre">Nouvelle pièce</strong>
+    <span style="width:60px"></span>
+  </header>
+  <form id="form-piece" class="vue" novalidate>
+    <div class="bloc-photos">
+      <div class="photos" id="ed-photos"></div>
+      <label class="ajout-photo">
+        <input type="file" id="ed-fichiers" accept="image/*" multiple hidden>
+        <span>+ Ajouter des photos</span>
+      </label>
+      <p class="aide">Jusqu'à 6 photos. La première est la photo principale. Touchez une photo pour la mettre en premier.</p>
+    </div>
+
+    <label class="champ">Nom de la pièce<input type="text" id="ed-nom" maxlength="120" placeholder="Ex. Bracelet Lagon Doré" required></label>
+    <label class="champ">Prix<span class="prix-champ"><input type="text" id="ed-prix" inputmode="decimal" placeholder="25,99" required><span>€</span></span></label>
+    <label class="champ">Description<textarea id="ed-desc" rows="6" maxlength="4000" placeholder="Racontez la pièce : matières, inspiration, dimensions…"></textarea></label>
+
+    <div class="champ"><span>Catégorie</span>
+      <div class="puces choix" id="ed-categorie">
+        <button type="button" class="puce" data-v="collier">Collier</button>
+        <button type="button" class="puce" data-v="bracelet">Bracelet</button>
+        <button type="button" class="puce" data-v="boucle">Boucles d'oreilles</button>
+      </div>
+    </div>
+    <div class="champ"><span>Collection</span>
+      <div class="puces choix" id="ed-collection">
+        <button type="button" class="puce" data-v="elixir">Élixir des Îles</button>
+        <button type="button" class="puce" data-v="essence">Essence des Caraïbes</button>
+      </div>
+    </div>
+    <div class="champ" id="ed-bloc-statut"><span>Statut</span>
+      <div class="puces choix" id="ed-statut">
+        <button type="button" class="puce" data-v="en_vente">En vente</button>
+        <button type="button" class="puce" data-v="masquee">Masquée</button>
+        <button type="button" class="puce" data-v="vendue">Vendue</button>
+      </div>
+    </div>
+
+    <p class="erreur" id="ed-erreur"></p>
+    <button class="btn principal grand" type="submit" id="ed-enregistrer">Publier</button>
+    <button class="btn danger" type="button" id="ed-supprimer" onclick="supprimerPiece()" hidden>Supprimer cette pièce</button>
+  </form>
+</section>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="gestion.js"></script>
+</body>
+</html>

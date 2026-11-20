@@ -224,7 +224,7 @@
     </details>
     <details class="faq-item">
       <summary>Quels moyens de paiement acceptez-vous ?</summary>
-      <p>Le paiement se fait par carte bancaire, sur une page de paiement sécurisée Stripe : il suffit de cliquer sur « Acheter cette pièce ». Nous n'avons jamais accès à vos coordonnées bancaires. Pour une pièce qui n'affiche pas encore ce bouton, ajoutez-la au panier et envoyez-nous votre demande par e-mail : nous vous répondons avec un lien de paiement.</p>
+      <p>Le paiement se fait par carte bancaire, sur une page de paiement sécurisée Stripe : ajoutez vos pièces au panier, choisissez votre zone de livraison, puis cliquez sur « Payer par carte ». Selon votre appareil, Apple Pay ou Google Pay peuvent aussi être proposés. Nous n'avons jamais accès à vos coordonnées bancaires.</p>
     </details>
     <details class="faq-item">
       <summary>Puis-je changer d'avis et retourner ma commande ?</summary>
@@ -296,8 +296,8 @@
     <p>Les prix sont indiqués en euros, toutes taxes comprises. <span class="a-completer">[À CONFIRMER : TVA non applicable, art. 293 B du CGI.]</span> Les frais de livraison s'ajoutent au prix. Leur montant est affiché sur la page <a href="#livraison-retours" data-page="livraison-retours">Livraison &amp; retours</a> et sur la page de paiement, avant toute validation. Le prix applicable est celui affiché au moment de la commande.</p>
 
     <h3>4. Commande</h3>
-    <p>Le Client choisit une pièce et clique sur « Acheter cette pièce ». Il est alors dirigé vers une page de paiement sécurisée, sur laquelle il renseigne ses coordonnées et son adresse de livraison, vérifie le récapitulatif (pièce, prix, frais de livraison, total) puis valide son paiement. La commande est ferme dès la validation du paiement. Une confirmation est envoyée par e-mail.</p>
-    <p>Le Client peut aussi demander une pièce par e-mail. Une proposition de commande et un lien de paiement lui sont alors adressés. La vente est conclue au paiement.</p>
+    <p>Le Client ajoute une ou plusieurs pièces à son panier, choisit sa zone de livraison, vérifie le récapitulatif (pièces, prix, frais de livraison, total) puis clique sur « Payer par carte ». Il est alors dirigé vers une page de paiement sécurisée, sur laquelle il renseigne ses coordonnées et son adresse de livraison avant de valider son paiement. La commande est ferme dès la validation du paiement. Une confirmation est envoyée par e-mail.</p>
+    <p>Pendant le paiement, les pièces du panier sont réservées au Client pendant 30 minutes environ. Si le paiement n'est pas finalisé, elles redeviennent disponibles.</p>
     <p>Chaque pièce étant unique, si deux commandes portent sur la même pièce, seule la première payée est retenue. L'autre Client est prévenu sans délai et intégralement remboursé, au plus tard sous 14 jours.</p>
 
     <h3>5. Paiement</h3>
@@ -428,6 +428,16 @@
     <p>Si votre bijou présente un défaut, vous bénéficiez des garanties légales décrites dans nos <a href="#cgv" data-page="cgv">conditions générales de vente</a>. Écrivez-nous avec une photo : nous réparons la pièce ou vous remboursons.</p>
   </div>
 </div>
+<!-- ==================== MERCI (retour après paiement) ==================== -->
+<div class="page" id="page-merci">
+  <div class="page-entete contenu-max reveal">
+    <div class="eyebrow" style="text-align:center;">Commande confirmée</div>
+    <h2>Merci pour votre commande</h2>
+    <p>Votre paiement a bien été reçu et un reçu vous a été envoyé par e-mail. Votre pièce unique est désormais à vous : nous la préparons avec soin et vous enverrons le numéro de suivi dès l'expédition.</p>
+    <button class="bouton-or" style="box-shadow:none; border:1px solid var(--or);" onclick="afficherPage('boutique')">Retour à la boutique</button>
+  </div>
+  <div style="height:var(--rythme)"></div>
+</div>
 </main>
 
 <footer>
@@ -484,11 +494,19 @@
     <h3>Votre sélection</h3>
     <p class="sous-titre">Ces pièces sont uniques : réservez-les vite.</p>
     <div id="liste-panier"></div>
-    <button class="bouton-principal" id="bouton-envoyer-panier" style="margin-top:16px; width:100%;" onclick="envoyerPanier()">Demander ces pièces par e-mail</button>
-    <p class="panier-note">Nous vous répondons avec la confirmation de disponibilité et un lien de paiement sécurisé.</p>
+    <div id="bloc-paiement" style="display:none;">
+      <div class="panier-titre">Livraison</div>
+      <div id="choix-zone"></div>
+      <div class="totaux" id="totaux"></div>
+      <button class="bouton-principal" id="bouton-payer" style="width:100%;" onclick="payer()">Payer par carte</button>
+      <p class="panier-note">Paiement sécurisé par Stripe. Vous indiquerez votre adresse à l'étape suivante. En payant, vous acceptez nos <a href="#cgv" data-page="cgv">CGV</a>.</p>
+    </div>
+    <button class="bouton-principal" id="bouton-envoyer-panier" style="display:none; margin-top:16px; width:100%;" onclick="envoyerPanier()">Demander ces pièces par e-mail</button>
+    <p class="panier-message" id="panier-message" role="status"></p>
   </div>
 </div>
 
+<script src="config.js"></script>
 <script src="produits.js"></script>
 <script src="script.js"></script>
 </body>

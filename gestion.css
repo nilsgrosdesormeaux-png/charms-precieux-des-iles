@@ -1,0 +1,97 @@
+:root {
+  --sable: #F6EEE1; --carte: #FCF8F1; --lagon: #17423F; --lagon-clair: #3B6F68;
+  --corail: #C1603C; --or: #B08B4F; --encre: #241F1A; --ligne: rgba(176, 139, 79, 0.3);
+  --vert: #2F7D5B;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; background: var(--sable); color: var(--encre); font-family: 'Work Sans', sans-serif; font-size: 16px; line-height: 1.5; }
+h1, h2 { font-family: 'Fraunces', serif; font-weight: 500; color: var(--lagon); }
+h2 { font-size: 1.15rem; margin: 28px 0 6px; }
+button, input, textarea, select { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+.aide { color: var(--lagon-clair); font-size: 0.85rem; margin: 4px 0 12px; }
+.erreur { color: var(--corail); font-size: 0.9rem; min-height: 1em; margin: 8px 0; }
+.lien { color: var(--corail); }
+
+/* Boutons */
+.btn { display: block; width: 100%; padding: 13px 16px; margin: 10px 0; border: 1px solid var(--lagon); background: #fff; color: var(--lagon); border-radius: 10px; font-weight: 500; cursor: pointer; }
+.btn.principal { background: var(--lagon); color: var(--sable); }
+.btn.grand { padding: 16px; font-size: 1.05rem; }
+.btn.danger { border-color: var(--corail); color: var(--corail); background: transparent; margin-top: 28px; }
+.btn.petit { display: inline-block; width: auto; padding: 8px 14px; margin: 4px 6px 4px 0; font-size: 0.88rem; }
+.btn:disabled { opacity: 0.55; cursor: wait; }
+
+/* Connexion */
+#ecran-connexion { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.carte-connexion { width: 100%; max-width: 360px; background: var(--carte); border: 1px solid var(--ligne); border-radius: 16px; padding: 28px 24px; text-align: center; }
+.carte-connexion img { margin: 0 auto 8px; border-radius: 50%; }
+.carte-connexion h1 { margin: 0; font-size: 1.5rem; }
+.carte-connexion label { display: block; text-align: left; font-size: 0.88rem; margin-top: 14px; }
+.carte-connexion input, .champ input, .champ textarea { display: block; width: 100%; margin-top: 6px; padding: 12px; border: 1px solid var(--ligne); border-radius: 10px; background: #fff; font-size: 16px; }
+
+/* Barre du haut + onglets du bas */
+.barre { position: sticky; top: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 16px; padding-top: max(12px, env(safe-area-inset-top)); background: var(--lagon); color: var(--sable); }
+.barre strong { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.1rem; }
+.lien-barre { background: none; border: none; color: var(--sable); opacity: 0.85; font-size: 0.85rem; text-decoration: none; cursor: pointer; padding: 4px 6px; }
+.vue { max-width: 640px; margin: 0 auto; padding: 16px 16px 110px; }
+.onglets { position: fixed; bottom: 0; left: 0; right: 0; z-index: 5; display: flex; background: #fff; border-top: 1px solid var(--ligne); padding-bottom: env(safe-area-inset-bottom); }
+.onglet { flex: 1; background: none; border: none; padding: 14px 4px; font-size: 0.92rem; color: var(--lagon-clair); cursor: pointer; position: relative; }
+.onglet.actif { color: var(--lagon); font-weight: 600; box-shadow: inset 0 3px 0 var(--corail); }
+.pastille { display: inline-block; min-width: 20px; padding: 0 6px; border-radius: 10px; background: var(--corail); color: #fff; font-size: 0.75rem; line-height: 20px; }
+
+/* Puces (filtres et choix) */
+.puces { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.puce { border: 1px solid var(--ligne); background: #fff; padding: 8px 14px; border-radius: 999px; font-size: 0.88rem; cursor: pointer; }
+.puce.actif { background: var(--lagon); color: var(--sable); border-color: var(--lagon); }
+
+/* Liste des pièces */
+.ligne { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--ligne); border-radius: 12px; padding: 10px; margin-bottom: 10px; cursor: pointer; }
+.ligne img, .ligne .vide { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; background: #EFE6D6; flex-shrink: 0; }
+.ligne .infos { flex: 1; min-width: 0; }
+.ligne .nom { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ligne .sous { font-size: 0.85rem; color: var(--lagon-clair); }
+.statut { display: inline-block; font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; margin-top: 4px; }
+.statut.en_vente { background: #E3F1EA; color: var(--vert); }
+.statut.vendue { background: #F6E2DA; color: var(--corail); }
+.statut.masquee { background: #ECE7DF; color: #6B6257; }
+.statut.reservee { background: #FFF3D6; color: #8A6514; }
+.fleches { display: flex; flex-direction: column; gap: 4px; }
+.fleches button { width: 36px; height: 30px; border: 1px solid var(--ligne); background: var(--carte); border-radius: 6px; cursor: pointer; }
+.fleches button:disabled { opacity: 0.3; }
+.titre-collection { font-family: 'Fraunces', serif; color: var(--lagon); margin: 22px 0 8px; }
+.vide-liste { text-align: center; color: var(--lagon-clair); padding: 40px 10px; }
+
+/* Éditeur */
+.feuille { position: fixed; inset: 0; z-index: 10; background: var(--sable); overflow-y: auto; }
+.champ { display: block; margin: 16px 0; font-size: 0.9rem; font-weight: 500; }
+.champ textarea { resize: vertical; font-weight: 400; }
+.prix-champ { display: flex; align-items: center; gap: 8px; }
+.prix-champ input { max-width: 160px; }
+.puces.choix { margin: 8px 0 0; }
+.photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.photo { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: #EFE6D6; border: 2px solid transparent; cursor: pointer; }
+.photo:first-child { border-color: var(--or); }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo .principale { position: absolute; left: 4px; bottom: 4px; background: var(--or); color: #fff; font-size: 0.68rem; padding: 1px 6px; border-radius: 6px; }
+.photo .retirer { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; border-radius: 50%; border: none; background: rgba(36,31,26,0.7); color: #fff; font-size: 1rem; line-height: 1; cursor: pointer; }
+.ajout-photo { display: block; margin-top: 8px; padding: 18px; border: 2px dashed var(--or); border-radius: 12px; text-align: center; color: var(--lagon); font-weight: 500; cursor: pointer; background: var(--carte); }
+
+/* Commandes */
+.commande { background: #fff; border: 1px solid var(--ligne); border-radius: 12px; padding: 14px; margin-bottom: 12px; font-size: 0.92rem; }
+.commande .entete { display: flex; justify-content: space-between; gap: 8px; color: var(--lagon-clair); font-size: 0.82rem; }
+.commande .client { font-weight: 600; font-size: 1rem; margin-top: 6px; }
+.commande .adresse { white-space: pre-line; background: var(--carte); border-radius: 8px; padding: 10px; margin: 8px 0; }
+.commande ul { margin: 6px 0; padding-left: 18px; }
+.commande input { width: 100%; padding: 10px; border: 1px solid var(--ligne); border-radius: 8px; margin: 8px 0 4px; font-size: 16px; }
+
+/* Zones */
+.zone-reglage { background: #fff; border: 1px solid var(--ligne); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+.zone-reglage .ligne-zone { display: flex; gap: 10px; align-items: flex-end; }
+.zone-reglage label { font-size: 0.82rem; display: block; flex: 1; }
+.zone-reglage input[type=text] { width: 100%; padding: 10px; border: 1px solid var(--ligne); border-radius: 8px; margin-top: 4px; font-size: 16px; }
+.interrupteur { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 0.88rem; }
+.interrupteur input { width: 20px; height: 20px; accent-color: var(--lagon); }
+
+.toast { position: fixed; left: 50%; bottom: 84px; transform: translateX(-50%) translateY(20px); background: var(--encre); color: #fff; padding: 12px 18px; border-radius: 10px; font-size: 0.9rem; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 20; max-width: calc(100% - 32px); text-align: center; }
+.toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.erreur { background: var(--corail); }
