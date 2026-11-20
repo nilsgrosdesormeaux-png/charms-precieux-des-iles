@@ -10,17 +10,18 @@
 <meta property="og:image" content="https://nilsgrosdesormeaux-png.github.io/charms-precieux-des-iles/images/hero.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/jpeg" href="images/logo.jpg">
-<link rel="preload" href="images/hero.webp" as="image" fetchpriority="high">
+<link rel="preload" href="images/hero.webp" as="image" type="image/webp" fetchpriority="high">
 <link rel="preload" href="fonts/Fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
 <header>
   <div class="nav">
     <button class="marque" onclick="afficherPage('accueil')" aria-label="Accueil">
-      <img src="images/logo.webp" alt="Charms Précieux des Îles" width="150" height="150">
+      <picture><source srcset="images/logo.webp" type="image/webp"><img src="images/logo.jpg" alt="Charms Précieux des Îles" width="150" height="150"></picture>
     </button>
     <div class="liens">
       <button data-page="accueil" onclick="afficherPage('accueil')">Accueil</button>
@@ -41,7 +42,7 @@
 <!-- ==================== ACCUEIL ==================== -->
 <div class="page actif" id="page-accueil">
   <div class="hero">
-    <img src="images/hero.webp" alt="Coucher de soleil sur l'océan, îles" fetchpriority="high">
+    <picture><source srcset="images/hero.webp" type="image/webp"><img src="images/hero.jpg" alt="Coucher de soleil sur l'océan, îles" fetchpriority="high"></picture>
     <div class="hero-contenu">
       <h1>Charms précieux des îles</h1>
       <p>Un souffle d'évasion gravé en acier éternel.</p>
@@ -53,7 +54,7 @@
   <div class="teaser-sf contenu-max reveal">
     <div class="teaser-grille">
       <div class="teaser-image">
-        <img src="images/faconnage.webp" alt="Façonnage à la main d'un bijou en acier" loading="lazy">
+        <picture><source srcset="images/faconnage.webp" type="image/webp"><img src="images/faconnage.jpg" alt="Façonnage à la main d'un bijou en acier" loading="lazy"></picture>
       </div>
       <div>
         <span class="eyebrow">Savoir-faire</span>
@@ -99,7 +100,7 @@
   <div class="bloc reveal">
     <div class="contenu-max bloc-grille">
       <div class="illustration">
-        <img src="images/faconnage.webp" alt="Façonnage à la main d'un bijou en acier" loading="lazy">
+        <picture><source srcset="images/faconnage.webp" type="image/webp"><img src="images/faconnage.jpg" alt="Façonnage à la main d'un bijou en acier" loading="lazy"></picture>
       </div>
       <div>
         <div class="eyebrow">L'artisanat au fil de l'eau</div>
@@ -119,7 +120,7 @@
         <p>Nous capturons cette essence pour vous l'offrir, afin qu'un souffle de vacances et de soleil vous accompagne partout, à chaque instant.</p>
       </div>
       <div class="illustration">
-        <img src="images/savoir-faire-1.webp" alt="Corail et perles sur le sable, île en arrière-plan" loading="lazy">
+        <picture><source srcset="images/savoir-faire-1.webp" type="image/webp"><img src="images/savoir-faire-1.jpg" alt="Corail et perles sur le sable, île en arrière-plan" loading="lazy"></picture>
       </div>
     </div>
   </div>
@@ -127,7 +128,7 @@
   <div class="bloc reveal">
     <div class="contenu-max bloc-grille">
       <div class="illustration">
-        <img src="images/savoir-faire-2.webp" alt="Outils d'orfèvre, perles et breloques sur bois, plage en arrière-plan" loading="lazy">
+        <picture><source srcset="images/savoir-faire-2.webp" type="image/webp"><img src="images/savoir-faire-2.jpg" alt="Outils d'orfèvre, perles et breloques sur bois, plage en arrière-plan" loading="lazy"></picture>
       </div>
       <div>
         <div class="eyebrow">L'exclusivité</div>
@@ -151,7 +152,7 @@
         </ul>
       </div>
       <div class="illustration">
-        <img src="images/savoir-faire-3.webp" alt="Façonnage à la main de chaînes en acier inoxydable, plage en arrière-plan" loading="lazy">
+        <picture><source srcset="images/savoir-faire-3.webp" type="image/webp"><img src="images/savoir-faire-3.jpg" alt="Façonnage à la main de chaînes en acier inoxydable, plage en arrière-plan" loading="lazy"></picture>
       </div>
     </div>
   </div>
@@ -159,7 +160,7 @@
   <div class="bloc reveal">
     <div class="contenu-max bloc-grille">
       <div class="illustration">
-        <img src="images/savoir-faire-4.webp" alt="Coquillages, perles et pierres naturelles sur bois" loading="lazy">
+        <picture><source srcset="images/savoir-faire-4.webp" type="image/webp"><img src="images/savoir-faire-4.jpg" alt="Coquillages, perles et pierres naturelles sur bois" loading="lazy"></picture>
       </div>
       <div>
         <div class="eyebrow">Les trésors de la nature</div>
@@ -506,6 +507,10 @@
   </div>
 </div>
 
+<script>
+  /* filet de sécurité : tout s'affiche même si un script échoue */
+  setTimeout(function () { document.querySelectorAll(".reveal").forEach(function (e) { e.classList.add("visible"); }); }, 2500);
+</script>
 <script src="config.js"></script>
 <script src="produits.js"></script>
 <script src="script.js"></script>
