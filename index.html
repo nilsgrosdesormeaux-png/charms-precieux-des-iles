@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charms Précieux des Îles · Bijoux uniques faits main en Martinique</title>
+<meta name="description" content="Bijoux en acier inoxydable façonnés à la main en Martinique. Chaque pièce n'existe qu'en un seul exemplaire. Livraison en France métropolitaine et outre-mer.">
+<meta property="og:title" content="Charms Précieux des Îles">
+<meta property="og:description" content="Un souffle d'évasion gravé en acier éternel. Bijoux uniques faits main en Martinique.">
+<meta property="og:image" content="images/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<link rel="preload" href="fonts/Fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <button class="marque" onclick="afficherPage('accueil')" aria-label="Accueil">
+      <img src="images/logo.jpg" alt="Charms Précieux des Îles" width="150" height="150">
+    </button>
+    <div class="liens">
+      <button data-page="accueil" onclick="afficherPage('accueil')">Accueil</button>
+      <button data-page="savoir-faire" onclick="afficherPage('savoir-faire')">Savoir-faire</button>
+      <button data-page="boutique" onclick="afficherPage('boutique')">Boutique</button>
+      <button data-page="faq" onclick="afficherPage('faq')">FAQ</button>
+    </div>
+    <div class="espace-droite">
+      <button class="bouton-panier" onclick="ouvrirPanier()" aria-label="Panier">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1.2 11H7.2L6 8Z" stroke="var(--or)" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" stroke="var(--or)" stroke-width="1.7"/></svg>
+        <span class="badge-panier vide" id="badge-panier">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ==================== ACCUEIL ==================== -->
+<div class="page actif" id="page-accueil">
+  <div class="hero">
+    <img src="images/hero.jpg" alt="Coucher de soleil sur l'océan, îles" fetchpriority="high">
+    <div class="hero-contenu">
+      <h1>Charms précieux des îles</h1>
+      <p>Un souffle d'évasion gravé en acier éternel.</p>
+      <button class="bouton-or" onclick="afficherPage('boutique')">Découvrir la boutique</button>
+    </div>
+    <div class="defiler"><span>Découvrir</span><span class="trait"></span></div>
+  </div>
+
+  <div class="teaser-sf contenu-max reveal">
+    <div class="teaser-grille">
+      <div class="teaser-image">
+        <img src="images/faconnage.jpg" alt="Façonnage à la main d'un bijou en acier" loading="lazy">
+      </div>
+      <div>
+        <span class="eyebrow">Savoir-faire</span>
+        <h3>Entièrement façonné à la main</h3>
+        <p>Entièrement façonnée à la main dans un acier inoxydable d'exception, chaque création est une œuvre inédite, pensée pour révéler la beauté singulière de chaque femme et de chaque homme. Aucune reproduction. Aucun doublon.</p>
+        <button class="lien-souligne" onclick="afficherPage('savoir-faire')">Découvrir notre savoir-faire</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="trilogie contenu-max">
+    <div class="trilogie-grille">
+      <button class="trilogie-carte reveal" onclick="afficherPage('savoir-faire')">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 14 L20 6 L32 14 L20 34 Z" stroke="var(--or)" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 14 H32 M14 14 L20 6 L26 14 M14 14 L20 34 M26 14 L20 34" stroke="var(--or)" stroke-width="1.3"/></svg>
+        <h3>Savoir-faire</h3>
+        <p>L'artisanat, le matériau, la philosophie de la pièce unique.</p>
+        <span class="mot">Explorer</span>
+      </button>
+      <button class="trilogie-carte reveal" onclick="afficherPage('boutique')">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M10 15h20l-2 17H12L10 15Z" stroke="var(--or)" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 15v-3a6 6 0 0112 0v3" stroke="var(--or)" stroke-width="1.6"/></svg>
+        <h3>Boutique</h3>
+        <p>Chaque pièce présentée n'existe qu'en un seul exemplaire.</p>
+        <span class="mot">Explorer</span>
+      </button>
+      <button class="trilogie-carte reveal" onclick="afficherPage('faq')">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="var(--or)" stroke-width="1.6"/><path d="M16 16c0-3 2-5 4.5-5s4 1.8 4 4c0 3-4 3.2-4 6.5" stroke="var(--or)" stroke-width="1.6" stroke-linecap="round"/><circle cx="20.3" cy="27" r="1.1" fill="var(--or)"/></svg>
+        <h3>Questions fréquentes</h3>
+        <p>Livraison, paiement, entretien : tout ce qu'il faut savoir.</p>
+        <span class="mot">Explorer</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SAVOIR-FAIRE ==================== -->
+<div class="page" id="page-savoir-faire">
+  <div class="page-entete contenu-max reveal">
+    <div class="eyebrow" style="text-align:center;">Savoir-faire</div>
+    <h2>L'excellence artisanale au cœur des Caraïbes</h2>
+    <p>Bienvenue dans l'univers de Charms Précieux des Îles. Plus qu'une simple marque de bijoux, nous concevons de véritables fragments d'évasion, où la beauté brute de la nature rencontre la minutie de l'artisanat.</p>
+  </div>
+
+  <div class="bloc reveal">
+    <div class="contenu-max bloc-grille">
+      <div class="illustration">
+        <img src="images/faconnage.jpg" alt="Façonnage à la main d'un bijou en acier" loading="lazy">
+      </div>
+      <div>
+        <div class="eyebrow">L'artisanat au fil de l'eau</div>
+        <h3>Entièrement façonné à la main</h3>
+        <p>Entièrement façonnée à la main dans un acier inoxydable d'exception, chaque création est une œuvre inédite, pensée pour révéler la beauté singulière de chaque femme et de chaque homme.</p>
+        <p>Aucune reproduction. Aucun doublon. Un bijou inaltérable et unique, pour une personne unique.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloc fond-teal reveal">
+    <div class="contenu-max bloc-grille inverse">
+      <div>
+        <div class="eyebrow">L'inspiration</div>
+        <h3>L'âme de la Martinique et l'esprit des îles</h3>
+        <p>Nées des paysages époustouflants de la Martinique, nos collections sont une ode vibrante aux Caraïbes. L'éclat doré d'un coucher de soleil sur l'océan, la pureté des sables fins, la richesse des récifs coralliens : chaque bijou raconte une histoire d'eau cristalline et d'élégance tropicale.</p>
+        <p>Nous capturons cette essence pour vous l'offrir, afin qu'un souffle de vacances et de soleil vous accompagne partout, à chaque instant.</p>
+      </div>
+      <div class="illustration">
+        <img src="images/savoir-faire-1.jpg" alt="Corail et perles sur le sable, île en arrière-plan" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="bloc reveal">
+    <div class="contenu-max bloc-grille">
+      <div class="illustration">
+        <img src="images/savoir-faire-2.jpg" alt="Outils d'orfèvre, perles et breloques sur bois, plage en arrière-plan" loading="lazy">
+      </div>
+      <div>
+        <div class="eyebrow">L'exclusivité</div>
+        <h3>La règle de l'unique</h3>
+        <p>Le véritable luxe réside dans la rareté. C'est pourquoi nous rejetons la production en série. Chaque bracelet, chaque collier, chaque paire de boucles d'oreilles est entièrement pensé et façonné à la main, avec une précision d'orfèvre.</p>
+        <p>Notre philosophie est stricte et assumée : aucune reproduction, aucun doublon. Chaque trésor appartient à celle ou celui qui saura s'en saisir en premier.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloc fond-teal reveal">
+    <div class="contenu-max bloc-grille inverse">
+      <div>
+        <div class="eyebrow">Le matériau</div>
+        <h3>Un pilier choisi pour durer</h3>
+        <p>Un fragment d'évasion ne devrait jamais se ternir. C'est pour cette raison que nous avons fait de l'acier inoxydable de première qualité le pilier de nos créations.</p>
+        <ul class="liste-materiau">
+          <li><strong>Inaltérable et durable.</strong> Il ne noircit pas, ne s'oxyde pas et conserve son éclat doré jour après jour.</li>
+          <li><strong>Totalement résistant à l'eau.</strong> Sous la douche, à la plage ou dans les lagons, votre bijou ne s'abîme jamais.</li>
+          <li><strong>Hypoallergénique.</strong> Respectueux des peaux les plus sensibles, pour un confort absolu au quotidien.</li>
+        </ul>
+      </div>
+      <div class="illustration">
+        <img src="images/savoir-faire-3.jpg" alt="Façonnage à la main de chaînes en acier inoxydable, plage en arrière-plan" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="bloc reveal">
+    <div class="contenu-max bloc-grille">
+      <div class="illustration">
+        <img src="images/savoir-faire-4.jpg" alt="Coquillages, perles et pierres naturelles sur bois" loading="lazy">
+      </div>
+      <div>
+        <div class="eyebrow">Les trésors de la nature</div>
+        <h3>Une alchimie entre force et délicatesse</h3>
+        <p>Pour sublimer la force de l'acier, nous sélectionnons méticuleusement des éléments naturels d'une grande finesse : des coquillages déposés par les marées, des perles lumineuses, des coques de noix de coco polies.</p>
+        <p>La nature ne crée jamais deux éléments identiques. Ces variations renforcent le caractère exclusif de nos bijoux, et donnent vie à nos créations.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BOUTIQUE ==================== -->
+<div class="page" id="page-boutique">
+  <div class="page-entete contenu-max reveal">
+    <div class="eyebrow" style="text-align:center;">Boutique</div>
+    <h2>Des pièces, chacune la dernière de son espèce</h2>
+  </div>
+  <div class="contenu-max">
+    <div class="filtres" id="filtres">
+      <button class="filtre actif" data-cat="tous">Toutes les pièces</button>
+      <button class="filtre" data-cat="collier">Colliers</button>
+      <button class="filtre" data-cat="bracelet">Bracelets</button>
+      <button class="filtre" data-cat="boucle">Boucles d'oreilles</button>
+    </div>
+  </div>
+
+  <div class="collection-bloc reveal" id="bloc-elixir">
+    <div class="collection-entete">
+      <h3>Élixir des Îles</h3>
+      <div class="collection-diviseur"><span></span></div>
+    </div>
+    <div class="contenu-large">
+      <div class="grille" id="grille-elixir"></div>
+    </div>
+  </div>
+
+  <div class="collection-bloc reveal" id="bloc-essence">
+    <div class="collection-entete">
+      <h3>Essence des Caraïbes</h3>
+      <div class="collection-diviseur"><span></span></div>
+    </div>
+    <div class="contenu-large">
+      <div class="grille" id="grille-essence"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FAQ ==================== -->
+<div class="page" id="page-faq">
+  <div class="page-entete contenu-max reveal">
+    <div class="eyebrow" style="text-align:center;">FAQ</div>
+    <h2>Questions fréquentes</h2>
+  </div>
+  <div class="contenu-max faq-liste reveal">
+    <details class="faq-item">
+      <summary>Qu'est-ce qu'une pièce unique chez Charms Précieux des Îles ?</summary>
+      <p>Chaque création est façonnée à la main en un seul exemplaire. Une fois vendue, elle n'est jamais reproduite à l'identique : c'est la garantie que personne d'autre au monde ne portera la même.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Livrez-vous en France métropolitaine et dans les DOM-TOM ?</summary>
+      <p>Oui, les commandes sont expédiées partout en France, métropole comme outre-mer, avec un numéro de suivi. Les frais et délais selon la destination sont détaillés sur la page <a href="#livraison-retours" data-page="livraison-retours">Livraison &amp; retours</a>, et toujours indiqués avant le paiement.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Quels moyens de paiement acceptez-vous ?</summary>
+      <p>Le paiement se fait par carte bancaire, sur une page de paiement sécurisée Stripe : il suffit de cliquer sur « Acheter cette pièce ». Nous n'avons jamais accès à vos coordonnées bancaires. Pour une pièce qui n'affiche pas encore ce bouton, ajoutez-la au panier et envoyez-nous votre demande par e-mail : nous vous répondons avec un lien de paiement.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Puis-je changer d'avis et retourner ma commande ?</summary>
+      <p>Oui. Vous disposez de 14 jours à compter de la réception pour nous informer que vous souhaitez retourner votre bijou, sans avoir à vous justifier. Il doit nous être renvoyé dans son état d'origine. Vous êtes remboursé(e) au plus tard 14 jours après votre demande, une fois la pièce reçue. Toutes les étapes sont sur la page <a href="#livraison-retours" data-page="livraison-retours">Livraison &amp; retours</a> et dans nos <a href="#cgv" data-page="cgv">conditions générales de vente</a>.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Comment entretenir mon bijou en acier inoxydable ?</summary>
+      <p>Il ne noircit pas, ne s'oxyde pas et résiste totalement à l'eau : douche, plage ou lagon ne l'abîment pas. Il est aussi hypoallergénique, pour un confort au quotidien. Les éléments naturels (coquillages, nacre, perles) gagnent à être essuyés délicatement avec un chiffon doux après un bain de mer.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Une pièce marquée vendue reviendra-t-elle en stock ?</summary>
+      <p>Non. Le principe de la maison est l'absence totale de reproduction : une fois vendue, une pièce ne revient jamais en stock, sous aucune forme.</p>
+    </details>
+  </div>
+</div>
+
+<!-- ==================== MENTIONS LÉGALES ==================== -->
+<div class="page" id="page-mentions-legales">
+  <div class="page-entete contenu-max">
+    <div class="eyebrow" style="text-align:center;">Informations légales</div>
+    <h2>Mentions légales</h2>
+  </div>
+  <div class="legal">
+    <p class="maj">Dernière mise à jour : novembre 2026</p>
+
+    <h3>Éditeur du site</h3>
+    <p>Le présent site est édité par :</p>
+    <ul>
+      <li><strong><span class="a-completer">[À COMPLÉTER : Prénom NOM]</span> (EI)</strong>, entrepreneur individuel, exerçant sous le nom commercial « Charms Précieux des Îles »</li>
+      <li>Adresse : <span class="a-completer">[À COMPLÉTER : adresse postale complète]</span></li>
+      <li>SIREN : <span class="a-completer">[À COMPLÉTER : 9 chiffres]</span></li>
+      <li>Immatriculation : <span class="a-completer">[À COMPLÉTER : Registre national des entreprises (RNE), ou autre mention indiquée sur l'avis de situation INSEE]</span></li>
+      <li>TVA : TVA non applicable, art. 293 B du CGI <span class="a-completer">[À CONFIRMER : uniquement si l'entreprise est en franchise de TVA]</span></li>
+      <li>E-mail : <a href="mailto:contact@charmsprecieux.fr">contact@charmsprecieux.fr</a></li>
+      <li>Téléphone : <span class="a-completer">[À COMPLÉTER]</span></li>
+    </ul>
+    <p>Directrice ou directeur de la publication : <span class="a-completer">[À COMPLÉTER : Prénom NOM]</span>.</p>
+
+    <h3>Hébergement</h3>
+    <p>Le site est hébergé par <strong>GitHub, Inc.</strong> (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Téléphone : <span class="a-completer">[À VÉRIFIER : +1 877 448 4820]</span>.</p>
+
+    <h3>Propriété intellectuelle</h3>
+    <p>L'ensemble des contenus de ce site (textes, photographies, logo, créations présentées, nom « Charms Précieux des Îles ») est la propriété exclusive de l'éditeur, sauf mention contraire. Toute reproduction, représentation ou réutilisation, totale ou partielle, sans autorisation écrite préalable est interdite.</p>
+
+    <h3>Données personnelles</h3>
+    <p>Les informations sur le traitement de vos données figurent dans notre <a href="#confidentialite" data-page="confidentialite">politique de confidentialité</a>. Le site n'utilise aucun cookie publicitaire ni outil de mesure d'audience.</p>
+
+    <h3>Conditions de vente</h3>
+    <p>Les ventes réalisées sur ce site sont régies par nos <a href="#cgv" data-page="cgv">conditions générales de vente</a>.</p>
+  </div>
+</div>
+
+<!-- ==================== CGV ==================== -->
+<div class="page" id="page-cgv">
+  <div class="page-entete contenu-max">
+    <div class="eyebrow" style="text-align:center;">Informations légales</div>
+    <h2>Conditions générales de vente</h2>
+  </div>
+  <div class="legal">
+    <p class="maj">En vigueur au : novembre 2026</p>
+
+    <h3>1. Objet</h3>
+    <p>Les présentes conditions générales de vente (CGV) s'appliquent à toutes les ventes de bijoux conclues sur le site Charms Précieux des Îles entre l'éditeur du site (le « Vendeur », dont l'identité figure dans les <a href="#mentions-legales" data-page="mentions-legales">mentions légales</a>) et toute personne physique agissant à des fins non professionnelles (le « Client »). Toute commande implique l'acceptation des CGV en vigueur au jour de la commande.</p>
+
+    <h3>2. Les pièces</h3>
+    <p>Les bijoux sont façonnés à la main, en acier inoxydable associé à des éléments naturels (coquillages, nacre, perles, pierres, coco). <strong>Chaque pièce est unique et n'existe qu'en un seul exemplaire.</strong> Les photographies sont aussi fidèles que possible. Les matières naturelles présentent des variations de teinte, de forme et d'aspect qui font partie du caractère de chaque pièce et ne constituent pas un défaut.</p>
+
+    <h3>3. Prix</h3>
+    <p>Les prix sont indiqués en euros, toutes taxes comprises. <span class="a-completer">[À CONFIRMER : TVA non applicable, art. 293 B du CGI.]</span> Les frais de livraison s'ajoutent au prix. Leur montant est affiché sur la page <a href="#livraison-retours" data-page="livraison-retours">Livraison &amp; retours</a> et sur la page de paiement, avant toute validation. Le prix applicable est celui affiché au moment de la commande.</p>
+
+    <h3>4. Commande</h3>
+    <p>Le Client choisit une pièce et clique sur « Acheter cette pièce ». Il est alors dirigé vers une page de paiement sécurisée, sur laquelle il renseigne ses coordonnées et son adresse de livraison, vérifie le récapitulatif (pièce, prix, frais de livraison, total) puis valide son paiement. La commande est ferme dès la validation du paiement. Une confirmation est envoyée par e-mail.</p>
+    <p>Le Client peut aussi demander une pièce par e-mail. Une proposition de commande et un lien de paiement lui sont alors adressés. La vente est conclue au paiement.</p>
+    <p>Chaque pièce étant unique, si deux commandes portent sur la même pièce, seule la première payée est retenue. L'autre Client est prévenu sans délai et intégralement remboursé, au plus tard sous 14 jours.</p>
+
+    <h3>5. Paiement</h3>
+    <p>Le paiement s'effectue par carte bancaire, au moment de la commande, via le prestataire de paiement sécurisé Stripe. Selon l'appareil du Client, d'autres moyens proposés par Stripe peuvent être disponibles (Apple Pay, Google Pay…). Le Vendeur n'a jamais accès aux données bancaires du Client.</p>
+
+    <h3>6. Livraison</h3>
+    <p>Les pièces sont livrées en France métropolitaine et en outre-mer, à l'adresse indiquée lors de la commande, dans les délais indiqués sur la page <a href="#livraison-retours" data-page="livraison-retours">Livraison &amp; retours</a>. À défaut d'indication, la livraison intervient au plus tard 30 jours après la commande. Si ce délai n'est pas respecté, le Client peut, après avoir demandé au Vendeur de livrer dans un délai supplémentaire raisonnable, resté sans effet, résoudre le contrat par écrit et être remboursé (articles L216-1 et suivants du Code de la consommation). Les risques de perte ou de détérioration sont transférés au Client au moment où il prend physiquement possession de la pièce.</p>
+
+    <h3>7. Droit de rétractation</h3>
+    <p>Conformément aux articles L221-18 et suivants du Code de la consommation, le Client dispose d'un délai de <strong>14 jours à compter de la réception</strong> de sa commande pour se rétracter, sans avoir à motiver sa décision.</p>
+    <h4>Comment se rétracter</h4>
+    <p>Le Client informe le Vendeur de sa décision avant l'expiration du délai par une déclaration dénuée d'ambiguïté, par e-mail à <a href="mailto:contact@charmsprecieux.fr">contact@charmsprecieux.fr</a> ou par courrier, en utilisant s'il le souhaite le formulaire figurant en fin de CGV. Il renvoie ensuite la pièce, au plus tard 14 jours après avoir communiqué sa décision, à l'adresse : <span class="a-completer">[À COMPLÉTER : adresse de retour]</span>.</p>
+    <h4>Frais et état du retour</h4>
+    <p>Les frais de renvoi sont à la charge du Client. <span class="a-completer">[À CONFIRMER : ou « pris en charge par le Vendeur »]</span> La pièce doit être retournée complète, dans son emballage d'origine si possible, et soigneusement protégée. La responsabilité du Client peut être engagée en cas de dépréciation résultant de manipulations autres que celles nécessaires pour établir la nature et les caractéristiques de la pièce.</p>
+    <h4>Remboursement</h4>
+    <p>Le Vendeur rembourse la totalité des sommes versées, y compris les frais de livraison initiaux (sur la base du mode de livraison standard), au plus tard 14 jours après avoir été informé de la décision du Client. Le remboursement utilise le même moyen de paiement que la commande, sauf accord contraire. Le Vendeur peut différer le remboursement jusqu'à la réception de la pièce ou jusqu'à ce que le Client ait fourni une preuve de son expédition, la date retenue étant celle du premier de ces faits.</p>
+    <h4>Exception</h4>
+    <p>Le droit de rétractation ne s'applique pas aux pièces confectionnées selon les spécifications du Client ou nettement personnalisées à sa demande (article L221-28, 3° du Code de la consommation). Les pièces uniques présentées en boutique ne sont pas concernées par cette exception : le droit de rétractation s'y applique.</p>
+
+    <h3>8. Garanties légales</h3>
+    <p>Toutes les pièces bénéficient de la garantie légale de conformité (articles L217-3 à L217-20 du Code de la consommation) et de la garantie légale des vices cachés (articles 1641 à 1649 du Code civil).</p>
+    <div class="encadre">
+      <p>Le consommateur dispose d'un délai de deux ans à compter de la délivrance du bien pour obtenir la mise en œuvre de la garantie légale de conformité en cas d'apparition d'un défaut de conformité. Durant ce délai, le consommateur n'est tenu d'établir que l'existence du défaut de conformité et non la date d'apparition de celui-ci.</p>
+      <p>La garantie légale de conformité donne au consommateur droit à la réparation ou au remplacement du bien dans un délai de trente jours suivant sa demande, sans frais et sans inconvénient majeur pour lui. Si la réparation et le remplacement sont impossibles, ou si le professionnel ne s'exécute pas, le consommateur a droit à une réduction du prix ou à la résolution du contrat, avec remboursement intégral contre restitution du bien. Tout bien réparé dans le cadre de la garantie légale de conformité bénéficie d'une extension de cette garantie de six mois.</p>
+      <p>Le professionnel qui fait obstacle de mauvaise foi à la mise en œuvre de la garantie légale de conformité encourt une amende civile d'un montant maximal de 300 000 euros, qui peut être porté jusqu'à 10 % du chiffre d'affaires moyen annuel (article L241-5 du Code de la consommation).</p>
+      <p>Le consommateur bénéficie également de la garantie légale des vices cachés en application des articles 1641 à 1649 du Code civil, pendant une durée de deux ans à compter de la découverte du défaut. Cette garantie donne droit à une réduction de prix si le bien est conservé, ou à un remboursement intégral contre restitution du bien.</p>
+    </div>
+    <p>Chaque pièce étant unique, un remplacement à l'identique est impossible : en cas de défaut, la pièce est réparée lorsque c'est possible, sinon le Client est remboursé. Les variations naturelles des matières décrites à l'article 2 ne constituent pas un défaut de conformité.</p>
+
+    <h3>9. Réclamations et médiation</h3>
+    <p>Toute réclamation peut être adressée à <a href="mailto:contact@charmsprecieux.fr">contact@charmsprecieux.fr</a>. En cas de litige non résolu après une réclamation écrite, le Client peut recourir gratuitement au médiateur de la consommation suivant : <span class="a-completer">[À COMPLÉTER : nom, adresse et site internet du médiateur auquel l'entreprise adhère (obligatoire)]</span>.</p>
+
+    <h3>10. Données personnelles</h3>
+    <p>Les données collectées lors d'une commande sont traitées conformément à notre <a href="#confidentialite" data-page="confidentialite">politique de confidentialité</a>.</p>
+
+    <h3>11. Droit applicable</h3>
+    <p>Les présentes CGV sont soumises au droit français. À défaut d'accord amiable, le litige peut être porté devant les juridictions compétentes dans les conditions prévues par la loi.</p>
+
+    <h3>Annexe : formulaire de rétractation</h3>
+    <div class="encadre">
+      <p><em>Veuillez compléter et renvoyer le présent formulaire uniquement si vous souhaitez vous rétracter du contrat.</em></p>
+      <p>À l'attention de <span class="a-completer">[Prénom NOM]</span>, Charms Précieux des Îles, <span class="a-completer">[adresse]</span>, contact@charmsprecieux.fr :</p>
+      <p>Je vous notifie par la présente ma rétractation du contrat portant sur la vente du bien ci-dessous :<br>
+      Nom de la pièce :<br>
+      Commandée le : &nbsp;&nbsp;&nbsp;&nbsp; / reçue le :<br>
+      Nom du client :<br>
+      Adresse du client :<br>
+      Signature du client (uniquement en cas de notification sur papier) :<br>
+      Date :</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONFIDENTIALITÉ ==================== -->
+<div class="page" id="page-confidentialite">
+  <div class="page-entete contenu-max">
+    <div class="eyebrow" style="text-align:center;">Informations légales</div>
+    <h2>Politique de confidentialité</h2>
+  </div>
+  <div class="legal">
+    <p class="maj">Dernière mise à jour : novembre 2026</p>
+
+    <h3>Qui est responsable de vos données ?</h3>
+    <p><span class="a-completer">[À COMPLÉTER : Prénom NOM]</span>, entrepreneur individuel exerçant sous le nom « Charms Précieux des Îles » (coordonnées complètes dans les <a href="#mentions-legales" data-page="mentions-legales">mentions légales</a>). Contact : <a href="mailto:contact@charmsprecieux.fr">contact@charmsprecieux.fr</a>.</p>
+
+    <h3>Quelles données, pourquoi, combien de temps ?</h3>
+    <table>
+      <tr><th>Situation</th><th>Données</th><th>Finalité et base légale</th><th>Durée</th></tr>
+      <tr><td>Achat d'une pièce</td><td>Nom, e-mail, adresse de livraison, téléphone éventuel, pièce achetée, montant</td><td>Exécuter la commande, livrer, gérer retours et garanties (contrat) ; comptabilité (obligation légale)</td><td>10 ans pour les pièces comptables, 5 ans pour le reste après la commande</td></tr>
+      <tr><td>Paiement</td><td>Données de carte bancaire</td><td>Traitées uniquement par Stripe. Nous n'y avons jamais accès.</td><td>Selon la politique de Stripe</td></tr>
+      <tr><td>E-mail envoyé à la boutique</td><td>Adresse e-mail, contenu du message</td><td>Répondre à votre demande (intérêt légitime ou mesures précontractuelles)</td><td>3 ans après le dernier échange</td></tr>
+      <tr><td>Visite du site</td><td>Adresse IP et données techniques de connexion</td><td>Sécurité et fonctionnement du site par l'hébergeur (intérêt légitime)</td><td>Durée courte, selon l'hébergeur</td></tr>
+    </table>
+    <p>Nous ne vendons ni ne louons vos données, et nous ne vous envoyons pas de publicité sans votre accord.</p>
+
+    <h3>Cookies et traceurs</h3>
+    <p>Ce site n'utilise <strong>aucun cookie publicitaire, aucun outil de mesure d'audience et aucun réseau social intégré</strong>. Les polices d'écriture sont hébergées sur le site lui-même. Seul le contenu de votre panier est mémorisé dans votre navigateur, pour le retrouver à votre prochaine visite. Il n'est envoyé à personne. Ce stockage est strictement nécessaire au service que vous demandez et ne requiert pas de consentement. La page de paiement Stripe, sur laquelle vous êtes redirigé(e), utilise ses propres cookies, nécessaires à la sécurité du paiement.</p>
+
+    <h3>Qui reçoit vos données ?</h3>
+    <ul>
+      <li><strong>Stripe</strong> (Stripe Payments Europe Ltd., Irlande) : paiement et prévention de la fraude ;</li>
+      <li><strong>Le transporteur</strong> <span class="a-completer">[À COMPLÉTER : ex. La Poste / Colissimo]</span> : livraison ;</li>
+      <li><strong>GitHub, Inc.</strong> (États-Unis) : hébergement du site ;</li>
+      <li><strong>Notre messagerie</strong> <span class="a-completer">[À COMPLÉTER : fournisseur de l'adresse e-mail, ex. Gmail, OVH…]</span> : échanges par e-mail.</li>
+    </ul>
+    <p>Certains de ces prestataires peuvent traiter des données hors de l'Union européenne, notamment aux États-Unis. Ces transferts sont encadrés par le cadre de protection des données UE–États-Unis (Data Privacy Framework) ou par les clauses contractuelles types de la Commission européenne.</p>
+
+    <h3>Vos droits</h3>
+    <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données, ainsi que du droit de définir des directives sur leur sort après votre décès. Pour les exercer, écrivez à <a href="mailto:contact@charmsprecieux.fr">contact@charmsprecieux.fr</a>. Nous répondons dans un délai d'un mois. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
+
+    <h3>Liens externes</h3>
+    <p>Les liens vers Instagram ou TikTok vous conduisent sur des services tiers, soumis à leur propre politique de confidentialité.</p>
+  </div>
+</div>
+
+<!-- ==================== LIVRAISON & RETOURS ==================== -->
+<div class="page" id="page-livraison-retours">
+  <div class="page-entete contenu-max">
+    <div class="eyebrow" style="text-align:center;">Informations pratiques</div>
+    <h2>Livraison &amp; retours</h2>
+  </div>
+  <div class="legal">
+    <p class="maj">Dernière mise à jour : novembre 2026</p>
+
+    <h3>Où livrons-nous ?</h3>
+    <p>Partout en France : métropole (Corse comprise) et outre-mer. Les pièces sont expédiées depuis <span class="a-completer">[À COMPLÉTER : la Martinique ?]</span>, soigneusement emballées, avec un numéro de suivi envoyé par e-mail.</p>
+
+    <h3>Frais et délais</h3>
+    <table>
+      <tr><th>Destination</th><th>Frais</th><th>Délai indicatif après expédition</th></tr>
+      <tr><td>Martinique</td><td><span class="a-completer">[À COMPLÉTER] €</span></td><td><span class="a-completer">[À COMPLÉTER] jours ouvrés</span></td></tr>
+      <tr><td>Autres départements et régions d'outre-mer</td><td><span class="a-completer">[À COMPLÉTER] €</span></td><td><span class="a-completer">[À COMPLÉTER] jours ouvrés</span></td></tr>
+      <tr><td>France métropolitaine</td><td><span class="a-completer">[À COMPLÉTER] €</span></td><td><span class="a-completer">[À COMPLÉTER] jours ouvrés</span></td></tr>
+    </table>
+    <p>Les commandes sont préparées et expédiées sous <span class="a-completer">[À COMPLÉTER : ex. 2 à 3]</span> jours ouvrés. Les frais exacts sont toujours affichés sur la page de paiement, avant validation. Selon la destination, des taxes ou formalités locales peuvent s'appliquer aux envois entre territoires <span class="a-completer">[À VÉRIFIER avec le transporteur]</span>.</p>
+
+    <h3>À la réception</h3>
+    <p>Si le colis semble abîmé, refusez-le ou émettez des réserves auprès du transporteur, prenez des photos et écrivez-nous à <a href="mailto:contact@charmsprecieux.fr">contact@charmsprecieux.fr</a> : nous trouverons une solution.</p>
+
+    <h3>Retourner une pièce</h3>
+    <ol>
+      <li><strong>Prévenez-nous dans les 14 jours</strong> suivant la réception, par e-mail à <a href="mailto:contact@charmsprecieux.fr">contact@charmsprecieux.fr</a>, en indiquant la pièce concernée. Vous n'avez pas à vous justifier.</li>
+      <li><strong>Renvoyez la pièce dans les 14 jours suivants</strong>, bien protégée, de préférence en envoi suivi, à l'adresse que nous vous communiquons. Les frais de retour sont à votre charge. <span class="a-completer">[À CONFIRMER]</span></li>
+      <li><strong>Vous êtes remboursé(e)</strong>, frais de livraison initiaux compris, au plus tard 14 jours après votre demande, dès que nous avons reçu la pièce ou la preuve de son expédition.</li>
+    </ol>
+    <p>Chaque pièce étant unique, un échange contre la même pièce n'est pas possible : il suffit de retourner la pièce et d'en choisir une autre.</p>
+
+    <h3>Un défaut ?</h3>
+    <p>Si votre bijou présente un défaut, vous bénéficiez des garanties légales décrites dans nos <a href="#cgv" data-page="cgv">conditions générales de vente</a>. Écrivez-nous avec une photo : nous réparons la pièce ou vous remboursons.</p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="contenu-max">
+    <div class="footer-int">
+      <a href="mailto:contact@charmsprecieux.fr">contact@charmsprecieux.fr</a>
+      <div class="reseaux">
+        <a href="https://www.instagram.com/charmsprecieuxdesiles/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="var(--sable)" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="var(--sable)" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="var(--sable)"/></svg>
+        </a>
+        <!-- TikTok : remplacer href="#" par le lien du compte, et retirer class="inactif" et onclick -->
+        <a href="#" class="inactif" title="Lien TikTok à venir" aria-label="TikTok" onclick="return false;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 3v10.5a3.5 3.5 0 11-3-3.46" stroke="var(--sable)" stroke-width="1.6" stroke-linecap="round"/><path d="M14 3c0 3 2.2 5 5 5.2" stroke="var(--sable)" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <nav aria-label="Informations légales">
+        <a href="#livraison-retours" data-page="livraison-retours">Livraison &amp; retours</a>
+        <a href="#cgv" data-page="cgv">CGV</a>
+        <a href="#mentions-legales" data-page="mentions-legales">Mentions légales</a>
+        <a href="#confidentialite" data-page="confidentialite">Confidentialité</a>
+      </nav>
+      <span>© 2026 Charms Précieux des Îles</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== FICHE PRODUIT PLEIN ÉCRAN ==================== -->
+<div class="voile-produit" id="voile-produit">
+  <div class="fp-entete">
+    <div class="fp-fil">Boutique / <span id="fp-fil-nom"></span></div>
+    <button class="fp-fermer" onclick="fermerDetail()" aria-label="Fermer">&times;</button>
+  </div>
+  <div class="fp-corps">
+    <div>
+      <div class="fp-carrousel" id="fp-carrousel"></div>
+      <div class="fp-points" id="fp-points"></div>
+    </div>
+    <div class="fp-info">
+      <span class="eyebrow" id="fp-collection"></span>
+      <h2 id="fp-nom"></h2>
+      <div class="piece-unique">pièce unique</div>
+      <p class="fp-desc" id="fp-desc"></p>
+      <div class="fp-prix" id="fp-prix"></div>
+      <div id="fp-bouton"></div>
+    </div>
+  </div>
+</div>
+
+<div class="voile" id="voile-panier">
+  <div class="panneau" style="max-width:420px;">
+    <button class="fermer" onclick="fermerTout()" aria-label="Fermer">&times;</button>
+    <h3>Votre sélection</h3>
+    <p class="sous-titre">Ces pièces sont uniques : réservez-les vite.</p>
+    <div id="liste-panier"></div>
+    <button class="bouton-principal" id="bouton-envoyer-panier" style="margin-top:16px; width:100%;" onclick="envoyerPanier()">Demander ces pièces par e-mail</button>
+    <p class="panier-note">Nous vous répondons avec la confirmation de disponibilité et un lien de paiement sécurisé.</p>
+  </div>
+</div>
+
+<script src="produits.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
