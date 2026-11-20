@@ -15,6 +15,12 @@ Site statique (HTML/CSS/JS, aucun serveur ni base de données), hébergé gratui
 Sur GitHub : ouvrir le fichier → crayon ✏️ → modifier → bouton vert **Commit changes**.
 Le site se met à jour tout seul en 1 à 2 minutes.
 
+## Photos et vitesse du site
+
+La boutique affiche des vignettes légères (`images/mini/*.webp`, 600 px de large), et la photo en taille réelle n'apparaît que dans la fiche produit.
+Une nouvelle photo ajoutée sans vignette s'affiche quand même : le site utilise alors la photo d'origine, simplement plus lente à charger.
+Pour garder un site rapide, envoyez des photos de 1200 px de large maximum, ou demandez à Claude de générer les vignettes.
+
 ## Réglages Stripe pour chaque lien de paiement
 
 - **Limiter le nombre de paiements : 1**. C'est indispensable pour une pièce unique.

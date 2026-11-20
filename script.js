@@ -39,12 +39,23 @@ document.addEventListener("click", e => {
 });
 
 /* ---- BOUTIQUE ---- */
+/* Vignette légère (images/mini/xxx.webp) si elle existe, sinon la photo d'origine. */
+function mini(src) { return /^images\/[^/]+\.jpe?g$/i.test(src) ? src.replace(/^images\/(.+)\.jpe?g$/i, "images/mini/$1.webp") : src; }
+function imgMini(src, attrs) {
+  return `<img src="${escHtml(mini(src))}" data-orig="${escHtml(src)}" onerror="if(this.src.indexOf('/mini/')>-1){this.src=this.dataset.orig}else{this.style.display='none'}" ${attrs}>`;
+}
+/* La 2e photo n'est chargée qu'au premier survol (inutile sur mobile). */
+function chargerSurvol(carte) {
+  const img = carte.querySelector("img.sec-img[data-src]");
+  if (img) { img.src = img.dataset.src; img.removeAttribute("data-src"); }
+}
+
 function carteHtml(p) {
   const photos = p.photos || [];
-  const img1 = photos[0] ? `<img class="hero-img" src="${escHtml(photos[0])}" alt="${escHtml(p.nom)}" loading="lazy" onerror="this.style.display='none'">` : `<div class="placeholder">photo à venir</div>`;
-  const img2 = photos[1] ? `<img class="sec-img" src="${escHtml(photos[1])}" alt="" loading="lazy">` : "";
+  const img1 = photos[0] ? imgMini(photos[0], `class="hero-img" alt="${escHtml(p.nom)}" loading="lazy" decoding="async"`) : `<div class="placeholder">photo à venir</div>`;
+  const img2 = photos[1] ? `<img class="sec-img" data-src="${escHtml(mini(photos[1]))}" data-orig="${escHtml(photos[1])}" onerror="if(this.src.indexOf('/mini/')>-1)this.src=this.dataset.orig" alt="" decoding="async">` : "";
   return `
-    <div class="piece ${p.vendue ? "vendue" : ""}" onclick="ouvrirDetail('${p.id}')">
+    <div class="piece ${p.vendue ? "vendue" : ""}" onclick="ouvrirDetail('${p.id}')" onmouseenter="chargerSurvol(this)">
       <div class="piece-image">
         ${p.vendue ? '<div class="ruban">vendue</div>' : ""}
         ${img1}${img2}
@@ -171,7 +182,7 @@ function afficherPanier() {
   bouton.style.display = "block";
   cible.innerHTML = items.map(p => `
     <div class="ligne-panier">
-      ${p.photos && p.photos[0] ? `<img src="${escHtml(p.photos[0])}" alt="">` : `<div style="width:44px;height:44px;background:#EFE6D6;"></div>`}
+      ${p.photos && p.photos[0] ? imgMini(p.photos[0], 'alt=""') : `<div style="width:44px;height:44px;background:#EFE6D6;"></div>`}
       <div class="infos"><div class="n">${escHtml(p.nom)}</div><div>${prixTexte(p)}</div></div>
       ${p.paiement ? `<a class="action-mini" href="${escHtml(p.paiement)}" rel="noopener">Payer</a>` : ""}
       <button class="action-mini" onclick="retirerDuPanier('${p.id}')">Retirer</button>
